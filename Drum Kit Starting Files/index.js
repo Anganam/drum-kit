@@ -8,6 +8,8 @@ for (var i = 0; i < numberOfDrumButtons; i++){
 
         var buttonInnerHTML = this.innerHTML;
         makeSound(buttonInnerHTML);
+
+        buttonAnnimation(buttonInnerHTML);
     });
 
 }
@@ -16,6 +18,7 @@ for (var i = 0; i < numberOfDrumButtons; i++){
 document.addEventListener("keydown", function (event) {
    
     makeSound(event.key)
+    buttonAnnimation(event.key)
 })
 
 //Fuction to play audio 
@@ -54,4 +57,17 @@ function makeSound(key){
         default:console.log(buttonInnerHTML);
             break;
     }
+}
+
+// Animations added to buttons
+
+function buttonAnnimation(currentkey) {
+
+    var activebutton = document.querySelector("." + currentkey);
+
+    activebutton.classList.add("pressed");
+
+    setTimeout(function (){
+        activebutton.classList.remove("pressed");
+    },100);
 }
